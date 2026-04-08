@@ -37,25 +37,25 @@ def test_prepare_payload_for_writeback_merges_locator_context() -> None:
 
     prepared = module.prepare_payload_for_writeback(
         payload=payload,
-        parent_item_key="PL6M34V3",
+        parent_item_key="ITEMFAK1",
         source_markdown_path="C:/tmp/source.md",
         locator_overrides={
-            "attachment_key": "JZ8GNS66",
+            "attachment_key": "ATTFAK01",
             "library_scope": "library",
             "page": 24,
             "page_label": "24",
-            "annotation_key": "ABCD1234",
+            "annotation_key": "ANNTEST1",
         },
     )
 
-    assert prepared["target_item_key"] == "PL6M34V3"
-    assert prepared["locator"]["target_item_key"] == "PL6M34V3"
+    assert prepared["target_item_key"] == "ITEMFAK1"
+    assert prepared["locator"]["target_item_key"] == "ITEMFAK1"
     assert prepared["locator"]["source_markdown_path"] == "C:/tmp/source.md"
     assert prepared["locator"]["attachment_type"] == "pdf"
-    assert prepared["locator"]["attachment_key"] == "JZ8GNS66"
+    assert prepared["locator"]["attachment_key"] == "ATTFAK01"
     assert prepared["locator"]["page"] == 24
     assert prepared["locator"]["page_label"] == "24"
-    assert prepared["locator"]["annotation_key"] == "ABCD1234"
+    assert prepared["locator"]["annotation_key"] == "ANNTEST1"
 
 
 def test_update_payload_file_persists_selected_item_and_locator(tmp_path: Path) -> None:
@@ -65,19 +65,19 @@ def test_update_payload_file_persists_selected_item_and_locator(tmp_path: Path) 
 
     module.update_payload_file(
         payload_path=payload_path,
-        parent_item_key="PL6M34V3",
+        parent_item_key="ITEMFAK1",
         source_markdown_path="C:/tmp/source.md",
         locator_overrides={
-            "attachment_key": "JZ8GNS66",
+            "attachment_key": "ATTFAK01",
             "library_scope": "library",
             "page": 24,
         },
     )
 
     updated = json.loads(payload_path.read_text(encoding="utf-8"))
-    assert updated["target_item_key"] == "PL6M34V3"
-    assert updated["locator"]["target_item_key"] == "PL6M34V3"
-    assert updated["locator"]["attachment_key"] == "JZ8GNS66"
+    assert updated["target_item_key"] == "ITEMFAK1"
+    assert updated["locator"]["target_item_key"] == "ITEMFAK1"
+    assert updated["locator"]["attachment_key"] == "ATTFAK01"
     assert updated["locator"]["page"] == 24
 
 
@@ -86,8 +86,8 @@ def test_build_locator_overrides_from_locator_json_and_args() -> None:
     args = SimpleNamespace(
         locator_json=json.dumps(
             {
-                "attachment_key": "JSONKEY",
-                "annotation_key": "JSONANN",
+                "attachment_key": "ATTJSON1",
+                "annotation_key": "ANNJSON1",
                 "page": 12,
                 "page_label": "12",
             }
@@ -107,7 +107,7 @@ def test_build_locator_overrides_from_locator_json_and_args() -> None:
     locator = module.build_locator_overrides_from_args(args)
 
     assert locator["attachment_key"] == "ARGKEY"
-    assert locator["annotation_key"] == "JSONANN"
+    assert locator["annotation_key"] == "ANNJSON1"
     assert locator["page"] == 12
     assert locator["page_label"] == "12"
     assert locator["attachment_type"] == "pdf"
@@ -119,10 +119,10 @@ def test_build_locator_overrides_from_locator_path_extracts_nested_locator(tmp_p
     locator_path.write_text(
         json.dumps(
             {
-                "annotationKey": "UBG4M4TA",
+                "annotationKey": "ANNFAK01",
                 "locator": {
-                    "attachment_key": "JZ8GNS66",
-                    "annotation_key": "UBG4M4TA",
+                    "attachment_key": "ATTFAK01",
+                    "annotation_key": "ANNFAK01",
                     "page": 135,
                     "page_label": "135",
                 },
@@ -148,8 +148,8 @@ def test_build_locator_overrides_from_locator_path_extracts_nested_locator(tmp_p
 
     locator = module.build_locator_overrides_from_args(args)
 
-    assert locator["attachment_key"] == "JZ8GNS66"
-    assert locator["annotation_key"] == "UBG4M4TA"
+    assert locator["attachment_key"] == "ATTFAK01"
+    assert locator["annotation_key"] == "ANNFAK01"
     assert locator["page"] == 135
 
 

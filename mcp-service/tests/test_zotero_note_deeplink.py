@@ -36,16 +36,16 @@ def test_render_note_includes_library_pdf_page_link() -> None:
         {
             "source_markdown_path": "C:/tmp/note.md",
             "attachment_type": "pdf",
-            "attachment_key": "JZ8GNS66",
+            "attachment_key": "ATTFAK01",
             "library_scope": "library",
             "page": 24,
         }
     )
 
-    note = module.render_note(payload, parent_item_key="PL6M34V3")
+    note = module.render_note(payload, parent_item_key="ITEMFAK1")
 
-    assert 'href="zotero://select/library/items/PL6M34V3"' in note
-    assert 'href="zotero://open-pdf/library/items/JZ8GNS66?page=24"' in note
+    assert 'href="zotero://select/library/items/ITEMFAK1"' in note
+    assert 'href="zotero://open-pdf/library/items/ATTFAK01?page=24"' in note
     assert ">PDF p.24<" in note
 
 
@@ -55,17 +55,17 @@ def test_render_note_upgrades_to_annotation_link_when_key_exists() -> None:
         {
             "source_markdown_path": "C:/tmp/note.md",
             "attachment_type": "pdf",
-            "attachment_key": "JZ8GNS66",
+            "attachment_key": "ATTFAK01",
             "library_scope": "library",
             "page": 24,
-            "annotation_key": "ABCD1234",
+            "annotation_key": "ANNTEST1",
         }
     )
 
-    note = module.render_note(payload, parent_item_key="PL6M34V3")
+    note = module.render_note(payload, parent_item_key="ITEMFAK1")
 
-    assert "annotation=ABCD1234" in note
-    assert 'href="zotero://open-pdf/library/items/JZ8GNS66?page=24&amp;annotation=ABCD1234"' in note
+    assert "annotation=ANNTEST1" in note
+    assert 'href="zotero://open-pdf/library/items/ATTFAK01?page=24&amp;annotation=ANNTEST1"' in note
 
 
 def test_render_note_supports_group_library_links() -> None:
@@ -74,17 +74,17 @@ def test_render_note_supports_group_library_links() -> None:
         {
             "source_markdown_path": "C:/tmp/note.md",
             "attachment_type": "pdf",
-            "attachment_key": "JZ8GNS66",
+            "attachment_key": "ATTFAK01",
             "library_scope": "groups",
             "group_id": "12345",
             "page": 8,
         }
     )
 
-    note = module.render_note(payload, parent_item_key="PL6M34V3")
+    note = module.render_note(payload, parent_item_key="ITEMFAK1")
 
-    assert 'href="zotero://select/groups/12345/items/PL6M34V3"' in note
-    assert 'href="zotero://open-pdf/groups/12345/items/JZ8GNS66?page=8"' in note
+    assert 'href="zotero://select/groups/12345/items/ITEMFAK1"' in note
+    assert 'href="zotero://open-pdf/groups/12345/items/ATTFAK01?page=8"' in note
 
 
 def test_render_note_falls_back_to_item_link_without_page() -> None:
@@ -93,12 +93,12 @@ def test_render_note_falls_back_to_item_link_without_page() -> None:
         {
             "source_markdown_path": "C:/tmp/note.md",
             "attachment_type": "pdf",
-            "attachment_key": "JZ8GNS66",
+            "attachment_key": "ATTFAK01",
             "library_scope": "library",
         }
     )
 
-    note = module.render_note(payload, parent_item_key="PL6M34V3")
+    note = module.render_note(payload, parent_item_key="ITEMFAK1")
 
-    assert 'href="zotero://select/library/items/PL6M34V3"' in note
+    assert 'href="zotero://select/library/items/ITEMFAK1"' in note
     assert "zotero://open-pdf/" not in note

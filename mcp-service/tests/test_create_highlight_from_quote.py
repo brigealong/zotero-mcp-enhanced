@@ -71,7 +71,7 @@ def test_build_highlight_annotation_request_uses_quote_text() -> None:
     module = load_module()
 
     request = module.build_highlight_annotation_request(
-        attachment_key="JZ8GNS66",
+        attachment_key="ATTFAK01",
         page_number=87,
         quote="19世纪是议会和民主的时代。",
         rects=[(1, 2, 3, 4)],
@@ -195,14 +195,14 @@ def test_build_quote_locator_contains_note_writeback_fields() -> None:
             "page_height": 886.553,
         },
         "测试句子",
-        attachment_key="JZ8GNS66",
-        annotation_key="UBG4M4TA",
+        attachment_key="ATTFAK01",
+        annotation_key="ANNFAK01",
         library_scope="library",
         group_id=None,
     )
 
-    assert locator["attachment_key"] == "JZ8GNS66"
-    assert locator["annotation_key"] == "UBG4M4TA"
+    assert locator["attachment_key"] == "ATTFAK01"
+    assert locator["annotation_key"] == "ANNFAK01"
     assert locator["attachment_type"] == "pdf"
     assert locator["library_scope"] == "library"
     assert locator["page"] == 135

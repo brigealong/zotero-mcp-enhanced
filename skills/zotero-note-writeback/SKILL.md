@@ -75,7 +75,7 @@ description: Use when the user wants to write current discussion, reading notes,
 ```json
 {
   "locator": {
-    "attachment_key": "JZ8GNS66",
+    "attachment_key": "ATTFAK01",
     "library_scope": "library",
     "group_id": null,
     "page": 24,
@@ -199,8 +199,8 @@ python scripts/writeback_from_search.py `
 ```json
 {
   "locator": {
-    "attachment_key": "JZ8GNS66",
-    "annotation_key": "UBG4M4TA",
+    "attachment_key": "ATTFAK01",
+    "annotation_key": "ANNFAK01",
     "attachment_type": "pdf",
     "library_scope": "library",
     "group_id": null,

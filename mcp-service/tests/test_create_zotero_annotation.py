@@ -29,13 +29,13 @@ def test_build_annotation_request_defaults_to_note_anchor() -> None:
     module = load_module()
 
     request = module.build_annotation_request(
-        attachment_key="JZ8GNS66",
+        attachment_key="ATTFAK01",
         page=24,
         comment="自动创建的 annotation 锚点",
     )
 
     assert request["action"] == "createAnnotation"
-    assert request["item_key"] == "JZ8GNS66"
+    assert request["item_key"] == "ATTFAK01"
     assert request["annotation_type"] == "note"
     assert request["page"] == 24
     assert request["page_label"] == "24"

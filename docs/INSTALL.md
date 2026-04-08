@@ -1,23 +1,44 @@
 # Installation Notes
 
-## 1. Plugin
+This guide separates setup into three independent parts:
 
-The Zotero plugin in `plugin/` is a manual-install source package.
+1. Zotero plugin
+2. Python MCP service
+3. Agent skills
 
-Recommended install path:
+You can install only the parts you need.
 
-1. Zip the contents of `plugin/` into an `.xpi`
-2. In Zotero, install the add-on from file
-3. Restart Zotero
+## 1. Install the Zotero Plugin
 
-The plugin queue directory defaults to the system temp directory under `zotero-mcp-enhanced`.
+The plugin in `plugin/` is a manual-install source package.
 
-Optional override:
+### Package the add-on
+
+1. Open the `plugin/` directory.
+2. Select the contents of that directory, not the parent folder itself.
+3. Zip those files so that `manifest.json` sits at the archive root.
+4. Rename the archive to `zotero-mcp-enhanced.xpi` if your zipper does not already produce `.xpi`.
+
+### Install into Zotero
+
+1. Open Zotero.
+2. Go to `Tools -> Plugins`.
+3. Choose `Install Add-on From File...`.
+4. Select the `.xpi` file.
+5. Restart Zotero.
+
+### Queue directory
+
+The plugin writes queue files to the system temp directory by default:
+
+- Windows example: `%TEMP%\\zotero-mcp-enhanced`
+
+If you want a stable custom path, set one of:
 
 - `ZOTERO_MCP_QUEUE_DIR`
 - `ZOTERO_PLUGIN_QUEUE_DIR`
 
-## 2. MCP Service
+## 2. Install the MCP Service
 
 From `mcp-service/`:
 
@@ -27,42 +48,54 @@ python -m venv .venv
 pip install -e .[test]
 ```
 
-If your environment does not support extras for editable install, use:
+If editable extras are not supported in your environment:
 
 ```powershell
 pip install -e .
 pip install pytest
 ```
 
-Run the server:
+### Start the service
+
+For a dependency-light local boot test:
 
 ```powershell
-python -m abbyy_mcp --base-dir .
+python -m abbyy_mcp --base-dir . --runner stub
 ```
 
-Use `--runner stub` if ABBYY is not installed.
+For a real OCR setup, replace the stub runner with your actual service configuration after verifying the basic service starts correctly.
 
-## 3. Optional OCR Dependencies
+### Verify the test suite
 
-### ABBYY
+```powershell
+pytest tests
+```
 
-Default Windows path used by the service:
+## 3. Optional OCR and Layout Dependencies
+
+These are not required for the base bridge or most writeback workflows.
+
+### ABBYY FineReader 15
+
+Default Windows path expected by the prototype service:
 
 - `C:\Program Files (x86)\ABBYY FineReader 15\FineCmd.exe`
 
-If ABBYY is not installed, run with the stub runner or adjust the service config in your own wrapper.
+If ABBYY is not installed, continue using `--runner stub`.
 
 ### pdftotext
 
-`create_highlight_from_quote.py` resolves `pdftotext` in this order:
+`mcp-service/scripts/create_highlight_from_quote.py` resolves `pdftotext` in this order:
 
 1. `PDFTOTEXT_PATH`
 2. `PATH`
 3. common Windows install paths
 
-## 4. Skills
+Use this dependency only if you want quote-to-annotation layout extraction.
 
-Copy the folders under `skills/` into your agent skill directory, or reference them directly from this repo.
+## 4. Install the Skills
+
+Copy or symlink the folders under `skills/` into your agent skill directory, or reference them directly from this repository.
 
 Included skills:
 
@@ -70,3 +103,34 @@ Included skills:
 - `zotero-attachment-resolve`
 - `zotero-workflow-orchestrator`
 - `zotero-note-writeback`
+
+## 5. Environment Variables for Writeback
+
+If you want to write notes back into Zotero, prepare:
+
+- `ZOT_DATA_DIR`
+- `ZOT_LIBRARY_ID`
+- `ZOT_API_KEY`
+
+These are not required for every repository feature. They are mainly needed for writeback flows and direct Zotero API interactions.
+
+## 6. Recommended Setup Profiles
+
+### Minimal
+
+- install the plugin
+- use the default local queue directory
+
+### Bridge + service
+
+- install the plugin
+- install the MCP service
+- run the service with `--runner stub` first
+
+### Full enhanced workflow
+
+- install the plugin
+- install the MCP service
+- install the four bundled skills
+- add writeback environment variables
+- optionally add ABBYY or `pdftotext` only if you need those specific flows
