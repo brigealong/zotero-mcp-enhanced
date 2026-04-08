@@ -1,4 +1,4 @@
 markdownreadercopy-pane-header =
-    .label = Markdown Reader
+    .label = Remi
 markdownreadercopy-pane-sidenav =
-    .tooltiptext = Markdown Reader
+    .tooltiptext = Remi Bridge

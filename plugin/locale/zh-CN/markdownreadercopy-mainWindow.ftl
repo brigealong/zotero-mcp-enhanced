@@ -1,4 +1,4 @@
 markdownreadercopy-pane-header =
-    .label = Markdown 阅读器
+    .label = Remi
 markdownreadercopy-pane-sidenav =
-    .tooltiptext = Markdown 阅读器
+    .tooltiptext = Remi 本地桥接器

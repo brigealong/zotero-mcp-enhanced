@@ -14,10 +14,19 @@ The plugin in `plugin/` is a manual-install source package.
 
 ### Package the add-on
 
-1. Open the `plugin/` directory.
-2. Select the contents of that directory, not the parent folder itself.
-3. Zip those files so that `manifest.json` sits at the archive root.
-4. Rename the archive to `zotero-mcp-enhanced.xpi` if your zipper does not already produce `.xpi`.
+Option A: use the ready-made package if the repository already includes:
+
+- `plugin/dist/zotero-mcp-enhanced.xpi`
+
+Option B: build the package yourself from source:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File plugin\build-plugin.ps1
+```
+
+After the script finishes, the installable file will be:
+
+- `plugin/dist/zotero-mcp-enhanced.xpi`
 
 ### Install into Zotero
 
@@ -64,6 +73,10 @@ python -m abbyy_mcp --base-dir . --runner stub
 ```
 
 For a real OCR setup, replace the stub runner with your actual service configuration after verifying the basic service starts correctly.
+
+If you want an ultra-detailed Windows guide, read:
+
+- [MCP-SERVICE-STEP-BY-STEP.md](MCP-SERVICE-STEP-BY-STEP.md)
 
 ### Verify the test suite
 

@@ -13,3 +13,5 @@ Thumbs.db
 outputs/
 tmp/
 *.log
+!plugin/dist/
+!plugin/dist/*.xpi

@@ -52,12 +52,18 @@ Optional:
 
 ### 1. Install the Zotero plugin
 
-The plugin in `plugin/` is a manual-install source package.
+You can install the plugin in either of these ways:
 
-1. Zip the contents of `plugin/` so that `manifest.json` is at the root of the archive.
-2. Rename the archive to `.xpi` if needed.
-3. In Zotero, open `Tools -> Plugins`, then install the add-on from file.
-4. Restart Zotero.
+- Direct install: use `plugin/dist/zotero-mcp-enhanced.xpi` if it is already included in the repository.
+- Build it yourself: run `powershell -ExecutionPolicy Bypass -File plugin/build-plugin.ps1` to regenerate the `.xpi` from the open-source `plugin/` directory.
+
+Then install it in Zotero:
+
+1. Open Zotero.
+2. Go to `Tools -> Plugins`.
+3. Choose `Install Add-on From File...`.
+4. Select `plugin/dist/zotero-mcp-enhanced.xpi`.
+5. Restart Zotero.
 
 By default, the plugin writes queue files to:
 
@@ -80,6 +86,8 @@ python -m abbyy_mcp --base-dir . --runner stub
 ```
 
 Use `--runner stub` when ABBYY is not installed. Switch to your real runner/config only after the basic service boot path works.
+
+For a click-by-click Windows walkthrough, see [docs/MCP-SERVICE-STEP-BY-STEP.md](docs/MCP-SERVICE-STEP-BY-STEP.md).
 
 ### 3. Install the bundled skills
 
