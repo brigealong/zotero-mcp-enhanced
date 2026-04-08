@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "abbyy-mcp-zotero-prototype"
+version = "0.1.0"
+description = "ABBYY FineReader 15 MCP prototype for searchable PDF jobs."
+requires-python = ">=3.10"
+dependencies = [
+  "mcp>=1.27.0",
+  "pypdf>=5.4.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=7.0",
+]
+build = [
+  "pyinstaller>=6.0",
+]
+
+[project.scripts]
+abbyy-mcp = "abbyy_mcp.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

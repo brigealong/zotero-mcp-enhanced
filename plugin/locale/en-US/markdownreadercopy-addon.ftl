@@ -1,0 +1,16 @@
+markdownreadercopy-status-loading = Loading Remi bridge status
+markdownreadercopy-status-ready = Remi bridge is ready
+markdownreadercopy-status-missing = The Remi bridge copy has not been generated yet
+markdownreadercopy-status-unsupported = This prototype currently supports only child Markdown attachments
+markdownreadercopy-status-error = Remi bridge generation failed:
+markdownreadercopy-label-source = Source attachment:
+markdownreadercopy-label-copy = Remi bridge copy:
+markdownreadercopy-label-unknown = Unknown
+markdownreadercopy-label-not-generated = Not generated
+markdownreadercopy-button-generate = Generate Remi bridge copy
+markdownreadercopy-button-open = Open Remi bridge copy
+markdownreadercopy-button-rebuild = Rebuild Remi bridge copy
+markdownreadercopy-action-generating = Generating the EPUB bridge copy for Remi
+markdownreadercopy-action-opening = Opening the EPUB bridge copy for Remi
+markdownreadercopy-action-rebuilding = Rebuilding the EPUB bridge copy for Remi
+markdownreadercopy-hint-copy-binding = New highlights and notes are attached to the generated Remi bridge copy instead of the original Markdown file.
