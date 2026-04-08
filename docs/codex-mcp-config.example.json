@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "zotero-mcp-enhanced": {
+      "command": "C:\\path\\to\\zotero-mcp-enhanced\\mcp-service\\dist\\zotero-mcp-enhanced-service.exe",
+      "args": [
+        "--base-dir",
+        "C:\\path\\to\\zotero-mcp-enhanced\\mcp-service-data",
+        "--runner",
+        "stub"
+      ]
+    }
+  }
+}

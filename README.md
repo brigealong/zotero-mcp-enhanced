@@ -76,6 +76,9 @@ Override with either of these environment variables:
 
 ### 2. Start the MCP service
 
+The original Python-based MCP service setup is still supported and will be kept.
+The standalone `.exe` path is an optional convenience layer, not a replacement.
+
 From `mcp-service/`:
 
 ```powershell
@@ -88,6 +91,10 @@ python -m abbyy_mcp --base-dir . --runner stub
 Use `--runner stub` when ABBYY is not installed. Switch to your real runner/config only after the basic service boot path works.
 
 For a click-by-click Windows walkthrough, see [docs/MCP-SERVICE-STEP-BY-STEP.md](docs/MCP-SERVICE-STEP-BY-STEP.md).
+
+If you want the original-style config path, use [docs/codex-mcp-config-python.example.json](docs/codex-mcp-config-python.example.json).
+
+If you want a simpler deployment path closer to the original Zotero MCP experience, see [docs/STANDALONE-MCP-SERVICE.md](docs/STANDALONE-MCP-SERVICE.md). That flow packages the service as a standalone `zotero-mcp-enhanced-service.exe` so your client config can point to a single executable instead of a Python command.
 
 ### 3. Install the bundled skills
 

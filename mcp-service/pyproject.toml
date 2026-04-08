@@ -16,6 +16,9 @@ dependencies = [
 test = [
   "pytest>=7.0",
 ]
+build = [
+  "pyinstaller>=6.0",
+]
 
 [project.scripts]
 abbyy-mcp = "abbyy_mcp.main:main"

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "zotero-mcp-enhanced": {
+      "command": "python",
+      "args": [
+        "-m",
+        "abbyy_mcp",
+        "--base-dir",
+        "C:\\path\\to\\zotero-mcp-enhanced\\mcp-service-data",
+        "--runner",
+        "stub"
+      ]
+    }
+  }
+}

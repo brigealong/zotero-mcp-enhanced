@@ -49,6 +49,12 @@ If you want a stable custom path, set one of:
 
 ## 2. Install the MCP Service
 
+Important:
+
+- the original Python launch method is still supported
+- the standalone `.exe` method is optional
+- we are not deleting the old MCP service startup path
+
 From `mcp-service/`:
 
 ```powershell
@@ -77,6 +83,14 @@ For a real OCR setup, replace the stub runner with your actual service configura
 If you want an ultra-detailed Windows guide, read:
 
 - [MCP-SERVICE-STEP-BY-STEP.md](MCP-SERVICE-STEP-BY-STEP.md)
+
+If you want the original Codex config style, use:
+
+- [codex-mcp-config-python.example.json](codex-mcp-config-python.example.json)
+
+If you want a simpler executable-based deployment model, read:
+
+- [STANDALONE-MCP-SERVICE.md](STANDALONE-MCP-SERVICE.md)
 
 ### Verify the test suite
 
