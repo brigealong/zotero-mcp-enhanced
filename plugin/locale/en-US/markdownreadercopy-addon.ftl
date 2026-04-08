@@ -1,0 +1,16 @@
+markdownreadercopy-status-loading = Loading reader copy state
+markdownreadercopy-status-ready = Reader copy is ready
+markdownreadercopy-status-missing = Reader copy has not been generated yet
+markdownreadercopy-status-unsupported = Only child Markdown attachments are supported in this PoC
+markdownreadercopy-status-error = Generation failed:
+markdownreadercopy-label-source = Source attachment:
+markdownreadercopy-label-copy = Reader copy:
+markdownreadercopy-label-unknown = Unknown
+markdownreadercopy-label-not-generated = Not generated
+markdownreadercopy-button-generate = Generate Reader Copy
+markdownreadercopy-button-open = Open Reader Copy
+markdownreadercopy-button-rebuild = Rebuild Reader Copy
+markdownreadercopy-action-generating = Generating EPUB reader copy
+markdownreadercopy-action-opening = Opening EPUB reader copy
+markdownreadercopy-action-rebuilding = Rebuilding EPUB reader copy
+markdownreadercopy-hint-copy-binding = Highlights and notes will be attached to the generated EPUB reader copy, not to the original Markdown file.

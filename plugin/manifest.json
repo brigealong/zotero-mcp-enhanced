@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Zotero MCP Enhanced Bridge",
+  "version": "0.6.0",
+  "description": "Manual-install Zotero bridge that routes item, collection, note, attachment, annotation, and trash writes through a local plugin queue.",
+  "homepage_url": "https://github.com/brigealong/zotero-mcp-enhanced",
+  "author": "brigealong",
+  "icons": {
+    "48": "content/icons/favicon@0.5x.png",
+    "96": "content/icons/favicon.png"
+  },
+  "applications": {
+    "zotero": {
+      "id": "zotero-mcp-enhanced-bridge@brigealong.github",
+      "strict_min_version": "6.999",
+      "strict_max_version": "8.*"
+    }
+  }
+}

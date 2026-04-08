@@ -1,0 +1,5 @@
+markdownreadercopy-pref-title = 插件模板设置示例
+markdownreadercopy-pref-enable =
+    .label = 开启
+markdownreadercopy-pref-input = 输入
+markdownreadercopy-pref-help = { $name } Build { $version } { $time }
