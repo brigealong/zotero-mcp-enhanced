@@ -1,10 +1,10 @@
 import time
 from pathlib import Path
 
-from abbyy_mcp.config import AppConfig
-from abbyy_mcp.job_store import JobStore
-from abbyy_mcp.runner import StubOcrRunner
-from abbyy_mcp.service import OcrJobService
+from zotero_mcp_enhanced_service.config import AppConfig
+from zotero_mcp_enhanced_service.job_store import JobStore
+from zotero_mcp_enhanced_service.runner import StubOcrRunner
+from zotero_mcp_enhanced_service.service import OcrJobService
 
 
 class CapturingRunner(StubOcrRunner):

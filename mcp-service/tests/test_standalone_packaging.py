@@ -38,7 +38,7 @@ def test_legacy_python_config_example_is_preserved() -> None:
     server = config["mcpServers"]["zotero-mcp-enhanced"]
 
     assert server["command"] == "python"
-    assert server["args"][:2] == ["-m", "abbyy_mcp"]
+    assert server["args"][:2] == ["-m", "zotero_mcp_enhanced_service"]
 
 
 def test_standalone_doc_explains_exe_first_setup() -> None:

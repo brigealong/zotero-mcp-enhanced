@@ -14,7 +14,7 @@ class OcrJobService:
         self.config = config
         self.store = store
         self.runner = runner
-        self.executor = ThreadPoolExecutor(max_workers=config.max_workers, thread_name_prefix="abbyy-ocr")
+        self.executor = ThreadPoolExecutor(max_workers=config.max_workers, thread_name_prefix="pdf-ocr")
 
     def submit_pdf_ocr(
         self,

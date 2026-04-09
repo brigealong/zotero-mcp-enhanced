@@ -7,7 +7,7 @@ from .service import OcrJobService
 
 
 def build_server(service: OcrJobService, *, bookmark_service: PdfBookmarkService | None = None) -> FastMCP:
-    mcp = FastMCP("abbyy-searchable-pdf")
+    mcp = FastMCP("zotero-mcp-enhanced-service")
 
     @mcp.tool()
     def submit_pdf_ocr(

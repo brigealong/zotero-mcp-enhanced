@@ -3,7 +3,7 @@
 `zotero-mcp-enhanced` packages the parts we changed around the Zotero MCP workflow into one repository:
 
 - a Zotero bridge plugin that writes local queue jobs from the Zotero UI
-- a Python MCP service for OCR-related jobs and bookmarked PDF generation
+- a Python MCP service startup path and packaging layer for local workflows
 - reusable agent skills for metadata lookup, attachment resolution, workflow orchestration, and note writeback
 
 This repository is a downstream enhancement project built on top of the Zotero MCP ecosystem. It is not a full mirror of the upstream Zotero MCP server.
@@ -20,21 +20,24 @@ docs/           Installation and publishing notes
 Current publishable scope:
 
 - bridge-style Zotero plugin changes
-- ABBYY-based OCR and bookmarked-PDF service
+- MCP service startup and packaging
 - note writeback and attachment workflow skills
 
 ## What Is Optional
 
-The PDF layout-recognition path is intentionally optional.
+The local PDF text-location path is intentionally optional.
 
-You can use the plugin bridge, note writeback flow, and most skill-based workflows without installing ABBYY or `pdftotext`.
+You can use the plugin bridge, note writeback flow, and most skill-based workflows without any proprietary OCR software.
 
 Optional components only needed for specific flows:
 
-- ABBYY FineReader 15 with `FineCmd.exe`
 - `pdftotext` for quote-to-annotation layout extraction
+- `OCRmyPDF` plus `Tesseract` if you want an open-source OCR runner
+- your own private local PDF enhancement chain, if you choose to build one separately
 
 If `pdftotext` is not on `PATH`, set `PDFTOTEXT_PATH` before running `mcp-service/scripts/create_highlight_from_quote.py`.
+
+This repository does not bundle or redistribute any proprietary OCR engine.
 
 ## Prerequisites
 
@@ -45,8 +48,9 @@ If `pdftotext` is not on `PATH`, set `PDFTOTEXT_PATH` before running `mcp-servic
 
 Optional:
 
-- ABBYY FineReader 15
 - `pdftotext`
+- `OCRmyPDF`
+- `Tesseract`
 
 ## Quick Start
 
@@ -85,10 +89,16 @@ From `mcp-service/`:
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -e .[test]
-python -m abbyy_mcp --base-dir . --runner stub
+python -m zotero_mcp_enhanced_service --base-dir . --runner stub
 ```
 
-Use `--runner stub` when ABBYY is not installed. Switch to your real runner/config only after the basic service boot path works.
+Use `--runner stub` for the public smoke test path. Proprietary OCR runner setup is intentionally out of scope for this repository's public install guide.
+
+If you want an open-source OCR path later, install `OCRmyPDF` and `Tesseract`, then switch to:
+
+```powershell
+python -m zotero_mcp_enhanced_service --base-dir . --runner ocrmypdf
+```
 
 For a click-by-click Windows walkthrough, see [docs/MCP-SERVICE-STEP-BY-STEP.md](docs/MCP-SERVICE-STEP-BY-STEP.md).
 
@@ -123,7 +133,7 @@ Install the Zotero plugin and point your local tooling at the queue directory. T
 
 ### Plugin + MCP service
 
-Install the plugin, then run the Python service for OCR or bookmarked-PDF flows.
+Install the plugin, then run the Python service for the queue-driven local workflow you want to test.
 
 ### Full workflow with agent skills
 

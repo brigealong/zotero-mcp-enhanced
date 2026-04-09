@@ -25,7 +25,7 @@ def build_payload() -> dict[str, object]:
         "focus": "测试焦点",
         "tags": ["test"],
         "locator": {
-            "source_markdown_path": "C:/tmp/source.md",
+            "source_markdown_path": "C:/example/source.md",
             "attachment_type": "pdf",
         },
     }
@@ -38,7 +38,7 @@ def test_prepare_payload_for_writeback_merges_locator_context() -> None:
     prepared = module.prepare_payload_for_writeback(
         payload=payload,
         parent_item_key="ITEMFAK1",
-        source_markdown_path="C:/tmp/source.md",
+        source_markdown_path="C:/example/source.md",
         locator_overrides={
             "attachment_key": "ATTFAK01",
             "library_scope": "library",
@@ -50,7 +50,7 @@ def test_prepare_payload_for_writeback_merges_locator_context() -> None:
 
     assert prepared["target_item_key"] == "ITEMFAK1"
     assert prepared["locator"]["target_item_key"] == "ITEMFAK1"
-    assert prepared["locator"]["source_markdown_path"] == "C:/tmp/source.md"
+    assert prepared["locator"]["source_markdown_path"] == "C:/example/source.md"
     assert prepared["locator"]["attachment_type"] == "pdf"
     assert prepared["locator"]["attachment_key"] == "ATTFAK01"
     assert prepared["locator"]["page"] == 24
@@ -66,7 +66,7 @@ def test_update_payload_file_persists_selected_item_and_locator(tmp_path: Path) 
     module.update_payload_file(
         payload_path=payload_path,
         parent_item_key="ITEMFAK1",
-        source_markdown_path="C:/tmp/source.md",
+        source_markdown_path="C:/example/source.md",
         locator_overrides={
             "attachment_key": "ATTFAK01",
             "library_scope": "library",
@@ -156,9 +156,9 @@ def test_build_locator_overrides_from_locator_path_extracts_nested_locator(tmp_p
 def test_build_command_env_forces_utf8_subprocess_io() -> None:
     module = load_module()
 
-    env = module.build_command_env(data_dir=r"C:\Zotero")
+    env = module.build_command_env(data_dir=r"C:\ExampleZotero")
 
-    assert env["ZOT_DATA_DIR"] == r"C:\Zotero"
+    assert env["ZOT_DATA_DIR"] == r"C:\ExampleZotero"
     assert env["PYTHONUTF8"] == "1"
     assert env["PYTHONIOENCODING"].lower() == "utf-8"
 

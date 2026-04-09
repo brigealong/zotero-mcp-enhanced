@@ -75,10 +75,24 @@ pip install pytest
 For a dependency-light local boot test:
 
 ```powershell
-python -m abbyy_mcp --base-dir . --runner stub
+python -m zotero_mcp_enhanced_service --base-dir . --runner stub
 ```
 
-For a real OCR setup, replace the stub runner with your actual service configuration after verifying the basic service starts correctly.
+For the public repository, `stub` is the documented startup mode. If you later wire in your own private local PDF-processing runner, treat that as a custom extension after the basic service boot path is verified.
+
+### Optional open-source OCR runner
+
+If you want OCR without proprietary software, install `OCRmyPDF` and `Tesseract`, then start:
+
+```powershell
+python -m zotero_mcp_enhanced_service --base-dir . --runner ocrmypdf
+```
+
+You can also run the helper probe:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\probe_ocrmypdf.ps1
+```
 
 If you want an ultra-detailed Windows guide, read:
 
@@ -98,17 +112,9 @@ If you want a simpler executable-based deployment model, read:
 pytest tests
 ```
 
-## 3. Optional OCR and Layout Dependencies
+## 3. Optional Local PDF and Layout Dependencies
 
 These are not required for the base bridge or most writeback workflows.
-
-### ABBYY FineReader 15
-
-Default Windows path expected by the prototype service:
-
-- `C:\Program Files (x86)\ABBYY FineReader 15\FineCmd.exe`
-
-If ABBYY is not installed, continue using `--runner stub`.
 
 ### pdftotext
 
@@ -119,6 +125,11 @@ If ABBYY is not installed, continue using `--runner stub`.
 3. common Windows install paths
 
 Use this dependency only if you want quote-to-annotation layout extraction.
+
+### Private PDF enhancement chain
+
+If you maintain your own local OCR or bookmark-generation toolchain, keep it outside this repository's documented public setup.
+This repository does not ship a proprietary OCR engine.
 
 ## 4. Install the Skills
 
@@ -160,4 +171,4 @@ These are not required for every repository feature. They are mainly needed for 
 - install the MCP service
 - install the four bundled skills
 - add writeback environment variables
-- optionally add ABBYY or `pdftotext` only if you need those specific flows
+- optionally add `pdftotext` only if you need quote-to-annotation layout extraction

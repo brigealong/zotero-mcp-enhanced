@@ -1,9 +1,9 @@
 import threading
 from pathlib import Path
 
-from abbyy_mcp.config import AppConfig
-from abbyy_mcp.job_store import JobStore
-from abbyy_mcp.models import JobStatus
+from zotero_mcp_enhanced_service.config import AppConfig
+from zotero_mcp_enhanced_service.job_store import JobStore
+from zotero_mcp_enhanced_service.models import JobStatus
 
 
 def test_job_store_creates_and_reads_job(tmp_path: Path) -> None:

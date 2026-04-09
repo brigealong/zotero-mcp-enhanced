@@ -16,7 +16,7 @@ You need:
 - Python 3.10 or newer
 - the repository already downloaded to your computer
 
-You do not need ABBYY for the first startup test.
+You do not need any proprietary OCR software for the first startup test.
 
 ## Step 1. Open PowerShell
 
@@ -105,13 +105,13 @@ pip install pytest
 Run:
 
 ```powershell
-python -m abbyy_mcp --base-dir . --runner stub
+python -m zotero_mcp_enhanced_service --base-dir . --runner stub
 ```
 
 Important:
 
 - `--runner stub` means "start in test mode"
-- this mode does not require ABBYY
+- this mode does not require any external OCR engine
 - this is the best way to confirm your basic setup is correct
 
 ## Step 7. Check whether startup succeeded
@@ -162,17 +162,36 @@ Then run again:
 .venv\Scripts\Activate.ps1
 ```
 
-### Problem: ABBYY is not installed
+### Problem: you do not have any OCR tool installed
 
 That is fine for the first test.
 
 Use:
 
 ```powershell
-python -m abbyy_mcp --base-dir . --runner stub
+python -m zotero_mcp_enhanced_service --base-dir . --runner stub
 ```
 
 Do not switch to the real OCR runner until the stub mode works.
+
+## Optional Open-Source OCR Mode
+
+After stub mode works, you can optionally add an open-source OCR runner:
+
+1. Install `OCRmyPDF`.
+2. Install `Tesseract OCR`.
+3. Make sure both commands are available in PowerShell.
+4. Run:
+
+```powershell
+python -m zotero_mcp_enhanced_service --base-dir . --runner ocrmypdf
+```
+
+If you want a quick environment check, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\probe_ocrmypdf.ps1
+```
 
 ## Summary
 
@@ -183,5 +202,5 @@ cd "C:\path\to\zotero-mcp-enhanced\mcp-service"
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -e .[test]
-python -m abbyy_mcp --base-dir . --runner stub
+python -m zotero_mcp_enhanced_service --base-dir . --runner stub
 ```

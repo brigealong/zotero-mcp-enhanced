@@ -34,7 +34,7 @@ def test_render_note_includes_library_pdf_page_link() -> None:
     module = load_module()
     payload = build_payload(
         {
-            "source_markdown_path": "C:/tmp/note.md",
+            "source_markdown_path": "C:/example/note.md",
             "attachment_type": "pdf",
             "attachment_key": "ATTFAK01",
             "library_scope": "library",
@@ -53,7 +53,7 @@ def test_render_note_upgrades_to_annotation_link_when_key_exists() -> None:
     module = load_module()
     payload = build_payload(
         {
-            "source_markdown_path": "C:/tmp/note.md",
+            "source_markdown_path": "C:/example/note.md",
             "attachment_type": "pdf",
             "attachment_key": "ATTFAK01",
             "library_scope": "library",
@@ -72,7 +72,7 @@ def test_render_note_supports_group_library_links() -> None:
     module = load_module()
     payload = build_payload(
         {
-            "source_markdown_path": "C:/tmp/note.md",
+            "source_markdown_path": "C:/example/note.md",
             "attachment_type": "pdf",
             "attachment_key": "ATTFAK01",
             "library_scope": "groups",
@@ -91,7 +91,7 @@ def test_render_note_falls_back_to_item_link_without_page() -> None:
     module = load_module()
     payload = build_payload(
         {
-            "source_markdown_path": "C:/tmp/note.md",
+            "source_markdown_path": "C:/example/note.md",
             "attachment_type": "pdf",
             "attachment_key": "ATTFAK01",
             "library_scope": "library",

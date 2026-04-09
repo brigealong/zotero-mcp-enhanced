@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "abbyy-mcp-zotero-prototype"
+name = "zotero-mcp-enhanced-service"
 version = "0.1.0"
-description = "ABBYY FineReader 15 MCP prototype for searchable PDF jobs."
+description = "MCP service packaging and startup layer for zotero-mcp-enhanced with optional open-source OCR runners."
 requires-python = ">=3.10"
 dependencies = [
   "mcp>=1.27.0",
@@ -21,7 +21,7 @@ build = [
 ]
 
 [project.scripts]
-abbyy-mcp = "abbyy_mcp.main:main"
+zotero-mcp-enhanced-service = "zotero_mcp_enhanced_service.main:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

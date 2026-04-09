@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from abbyy_mcp.main import main
+from zotero_mcp_enhanced_service.main import main
 
 
 if __name__ == "__main__":

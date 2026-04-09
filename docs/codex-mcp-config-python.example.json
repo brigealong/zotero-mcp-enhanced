@@ -4,7 +4,7 @@
       "command": "python",
       "args": [
         "-m",
-        "abbyy_mcp",
+        "zotero_mcp_enhanced_service",
         "--base-dir",
         "C:\\path\\to\\zotero-mcp-enhanced\\mcp-service-data",
         "--runner",

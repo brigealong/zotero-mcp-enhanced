@@ -2,7 +2,7 @@ from pathlib import Path
 
 from pypdf import PdfReader, PdfWriter
 
-from abbyy_mcp.bookmarks import (
+from zotero_mcp_enhanced_service.bookmarks import (
     BookmarkEntry,
     infer_pdf_page_offset,
     parse_toc_entries,

@@ -82,19 +82,10 @@ For first startup, use:
 
 - `stub`
 
-This avoids ABBYY dependency problems and lets you verify that Codex can start the MCP service process correctly.
+This avoids proprietary dependency problems and lets you verify that Codex can start the MCP service process correctly.
 
-Later, if ABBYY is installed and configured, you can change:
-
-```json
-"stub"
-```
-
-to:
-
-```json
-"abbyy"
-```
+This repository's public documentation only covers the `stub` startup path.
+If you later connect `OCRmyPDF` or another local PDF-processing runner, treat that as an optional extension layer on top of this base packaging flow.
 
 ## Why this is closer to the original Zotero MCP experience
 
@@ -108,7 +99,7 @@ This standalone packaging restores that model.
 Instead of asking the user to remember:
 
 ```powershell
-python -m abbyy_mcp --base-dir . --runner stub
+python -m zotero_mcp_enhanced_service --base-dir . --runner stub
 ```
 
 Codex can point directly to:

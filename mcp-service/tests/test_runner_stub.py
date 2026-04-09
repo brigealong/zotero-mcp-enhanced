@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from abbyy_mcp.runner import StubOcrRunner
+from zotero_mcp_enhanced_service.runner import StubOcrRunner
 
 
 def test_stub_runner_copies_input_to_output(tmp_path: Path) -> None:

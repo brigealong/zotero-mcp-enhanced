@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from abbyy_mcp.pdf_service import PdfBookmarkService
+from zotero_mcp_enhanced_service.pdf_service import PdfBookmarkService
 
 
 def parse_args() -> argparse.Namespace:
