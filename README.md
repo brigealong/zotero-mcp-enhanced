@@ -23,6 +23,19 @@ Current publishable scope:
 - MCP service startup and packaging
 - note writeback and attachment workflow skills
 
+## Release Positioning
+
+This public repository is split into two layers:
+
+- Base layer included here: plugin source, ready-made `.xpi` when present, MCP service code, optional standalone packaging, skills, and setup docs
+- Optional OCR layer installed separately: `OCRmyPDF`, `Tesseract`, and `pdftotext` only if you need OCR or quote-to-annotation layout extraction
+
+In other words:
+
+- you can install the base project directly from this repository
+- OCR dependencies are not bundled into the repository and are not auto-installed
+- if you need OCR, follow the separate local install steps in the docs
+
 ## What Is Optional
 
 The local PDF text-location path is intentionally optional.
@@ -82,6 +95,7 @@ Override with either of these environment variables:
 
 The original Python-based MCP service setup is still supported and will be kept.
 The standalone `.exe` path is an optional convenience layer, not a replacement.
+Neither path auto-installs OCR dependencies for the user.
 
 From `mcp-service/`:
 

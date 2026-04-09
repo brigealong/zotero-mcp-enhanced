@@ -8,6 +8,25 @@ This guide separates setup into three independent parts:
 
 You can install only the parts you need.
 
+## What You Get From This Repository
+
+Directly provided here:
+
+- plugin source
+- ready-made `.xpi` package when included in the repo or release
+- MCP service source
+- optional standalone `.exe` packaging flow
+- bundled skills
+- setup documentation
+
+Installed separately only when needed:
+
+- `OCRmyPDF`
+- `Tesseract`
+- `pdftotext`
+
+This means the base project can be installed from this repository, but OCR-related dependencies are separate local installs.
+
 ## 1. Install the Zotero Plugin
 
 The plugin in `plugin/` is a manual-install source package.
@@ -54,6 +73,7 @@ Important:
 - the original Python launch method is still supported
 - the standalone `.exe` method is optional
 - we are not deleting the old MCP service startup path
+- neither startup path auto-installs OCR dependencies
 
 From `mcp-service/`:
 
@@ -82,7 +102,7 @@ For the public repository, `stub` is the documented startup mode. If you later w
 
 ### Optional open-source OCR runner
 
-If you want OCR without proprietary software, install `OCRmyPDF` and `Tesseract`, then start:
+If you want OCR without proprietary software, install `OCRmyPDF` and `Tesseract` separately, then start:
 
 ```powershell
 python -m zotero_mcp_enhanced_service --base-dir . --runner ocrmypdf
@@ -125,6 +145,17 @@ These are not required for the base bridge or most writeback workflows.
 3. common Windows install paths
 
 Use this dependency only if you want quote-to-annotation layout extraction.
+
+### OCRmyPDF and Tesseract
+
+These are optional add-ons, not bundled parts of the repository.
+
+Use them only if you want the open-source OCR runner:
+
+- install `OCRmyPDF`
+- install `Tesseract`
+- confirm both commands are available in PowerShell
+- then start the service with `--runner ocrmypdf`
 
 ### Private PDF enhancement chain
 

@@ -25,6 +25,7 @@ The standalone path changes that to:
 
 If you are using a prebuilt `zotero-mcp-enhanced-service.exe`, you do not need to install Python first.
 This is only an optional convenience path. The original Python-based MCP service configuration remains supported.
+This executable packaging does not bundle `OCRmyPDF`, `Tesseract`, or `pdftotext`.
 
 ## Build the executable
 
@@ -86,6 +87,7 @@ This avoids proprietary dependency problems and lets you verify that Codex can s
 
 This repository's public documentation only covers the `stub` startup path.
 If you later connect `OCRmyPDF` or another local PDF-processing runner, treat that as an optional extension layer on top of this base packaging flow.
+In that case, install those OCR tools separately on the local machine first.
 
 ## Why this is closer to the original Zotero MCP experience
 
