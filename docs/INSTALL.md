@@ -118,6 +118,10 @@ If you want an ultra-detailed Windows guide, read:
 
 - [MCP-SERVICE-STEP-BY-STEP.md](MCP-SERVICE-STEP-BY-STEP.md)
 
+If you are on macOS and want the HTTP MCP endpoint to be kept alive automatically, read:
+
+- [MACOS-LAUNCHD-MCP-SERVICE.md](MACOS-LAUNCHD-MCP-SERVICE.md)
+
 If you want the original Codex config style, use:
 
 - [codex-mcp-config-python.example.json](codex-mcp-config-python.example.json)

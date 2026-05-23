@@ -53,11 +53,11 @@ Using an isolated build environment is intentional. It avoids failures caused by
 
 Copy the example file:
 
-- [codex-mcp-config.example.json](C:/Users/baoyi/Agent-Workspace/tasks/active/20260408-zotero-mcp-github发布/zotero-mcp-enhanced/docs/codex-mcp-config.example.json)
+- [codex-mcp-config.example.json](codex-mcp-config.example.json)
 
 If you prefer to keep the original Python command style, use:
 
-- [codex-mcp-config-python.example.json](C:/Users/baoyi/Agent-Workspace/tasks/active/20260408-zotero-mcp-github发布/zotero-mcp-enhanced/docs/codex-mcp-config-python.example.json)
+- [codex-mcp-config-python.example.json](codex-mcp-config-python.example.json)
 
 The most important part is this:
 
