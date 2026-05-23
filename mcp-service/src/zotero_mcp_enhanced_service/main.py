@@ -17,11 +17,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--base-dir", type=Path, default=Path.cwd())
     parser.add_argument("--runner", choices=["ocrmypdf", "stub"], default="stub")
     parser.add_argument("--transport", choices=["stdio", "sse", "streamable-http"], default="stdio")
+    parser.add_argument("--port", type=int, default=23120, help="Port for streamable-http transport (default: 23120)")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    
+    # Set port via environment variable for streamable-http transport
+    if args.transport == "streamable-http":
+        import os
+        os.environ["MCP_HTTP_PORT"] = str(args.port)
+    
     config = AppConfig.from_base_dir(args.base_dir)
     runner = (
         OcrmypdfRunner(ocrmypdf_path=config.ocrmypdf_path, timeout_seconds=config.command_timeout_seconds)

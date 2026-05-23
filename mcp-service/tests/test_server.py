@@ -24,4 +24,10 @@ def test_server_exposes_expected_tools(tmp_path: Path) -> None:
         "get_ocr_job_status",
         "get_ocr_job_result",
         "cleanup_ocr_job",
+        "zotero_create_collection",
+        "zotero_add_item_to_collections",
+        "zotero_update_item_fields",
+        "zotero_create_note",
+        "zotero_create_item",
+        "zotero_update_note",
     }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.brigealong.zotero-mcp-enhanced-service</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>${HOME}/zotero-mcp-enhanced/scripts/start-zotero-mcp-service.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>${HOME}/zotero-mcp-enhanced</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>ZOTERO_MCP_PORT</key>
+    <string>23120</string>
+    <key>ZOTERO_MCP_RUNNER</key>
+    <string>stub</string>
+  </dict>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/zotero-mcp-enhanced-service.stdout.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/zotero-mcp-enhanced-service.stderr.log</string>
+</dict>
+</plist>
