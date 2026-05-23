@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "stored-attachment-poc@knowledgehub.local": {
+      "updates": [
+        {
+          "version": "0.6.1",
+          "update_link": "https://github.com/brigealong/zotero-mcp-enhanced/releases/download/v0.6.1/zotero-mcp-enhanced.xpi"
+        }
+      ]
+    }
+  }
+}
